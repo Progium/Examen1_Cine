@@ -39,7 +39,7 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
   };
 
   $scope.mostrarAsientosSeleccionadas = function() {
-    $scope.mensaje = "Asientos seleccionadas: ";
+    $scope.mensaje = "Asientos seleccionados: ";
     $scope.cantidadAsientos = 0;
     $scope.asientosSeleccionados = [];
 
