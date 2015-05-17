@@ -44,3 +44,10 @@ html, body {
   border-left-width: 5px;
   border-radius: 3px;
 }
+
+.logo-progium {
+    right: 20%;
+    top: 25px;
+    position: absolute;
+    height: 120px;
+}

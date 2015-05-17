@@ -26,8 +26,13 @@
 
 			<!-- APerez: Login -->
 			<div class="container contenedor-principal" ng-controller="LogginController" ng-show="esVisible">
+				<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
+					<h3 id="alternate-elements">Iniciar sesion</h3>
+					<p>Por favor ingresar el nombre y contraseña para iniciar sesion.</p>
+					<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
+				</div>
+
 				<form class="form-signin">
-					<h2 class="form-signin-heading">Por favor iniciar sesion</h2>
 					<label for="inputEmail" class="sr-only">Nombre</label>
 					<input id="inputEmail" class="form-control" placeholder="Usuario" ng-model="nombre" required="" autofocus="">
 					<label for="inputPassword" class="sr-only">Contraseña</label>
@@ -45,11 +50,12 @@
 
 			<!-- JPerez: Listar peliculas y tandas -->
 
-			<div class="container" ng-controller="PeliculasController" ng-show="esVisible">
+			<div class="container contenedor-principal" ng-controller="PeliculasController" ng-show="esVisible">
 				<div class="row">
 					<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
 						<h3 id="alternate-elements">Lista de peliculas y tandas disponibles</h3>
 						<p>Por favor seleccionar la pelicula y tanda preferida.</p>
+						<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
 					</div>
 
 					<div class="col-sm-3" ng-repeat="pelicula in listaPeliculas">
@@ -78,6 +84,7 @@
 					<p>Por favor seleccionar los asientos de tu preferencia.</p>
 
 					<h4>{{mensaje}}</h4>
+					<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
 				</div>
 
 
@@ -105,6 +112,7 @@
 				<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
 					<h3 id="alternate-elements">Detalles de la compra</h3>
 					<p>Sus boletos estan listos para ser procedos, confirmar los detalles de la orden.</p>
+					<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
 				</div>
 
 				<h3>Cin&eacute;polis Paseo Metr&oacute;poli</h3>
