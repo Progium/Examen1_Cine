@@ -32,6 +32,9 @@
 					<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
 				</div>
 
+				<p>Nota: Para pruebas puede usar el usuario temporal:</p>
+				<p><b>Nombre:</b> Admin y <b>Contrase&ntilde;a:</b> 1234</p>
+					
 				<form class="form-signin">
 					<label for="inputEmail" class="sr-only">Nombre</label>
 					<input id="inputEmail" class="form-control" placeholder="Usuario" ng-model="nombre" required="" autofocus="">
@@ -44,6 +47,7 @@
 					</div> -->
 					<br/>
 					<button class="btn btn-lg btn-primary btn-block" ng-click="iniciarSesion()">Entrar</button>
+
 					<span ng-show="mostrarMensaje" class="mensaje">Nombre o contrase&ntilde;a inv&aacute;lidas</span>
 				</form>
 			</div>
