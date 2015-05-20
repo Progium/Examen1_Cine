@@ -104,7 +104,7 @@
 					</div>
 				</div>
 				<div class="col-sm-3 button-next">
-					<button ng-click="mostrarDetallesCompra()" class="btn btn-success pull-right">Continuar</button>
+					<button ng-show="botonVisible" ng-click="mostrarDetallesCompra()" class="btn btn-success pull-right">Continuar</button>
 				</div>
 			</div>
 
@@ -136,6 +136,12 @@
 									Fecha:
 								</th>
 								<td>{{pedido.fecha}}</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									N&uacute;mero de Tarjeta:
+								</th>
+								<td>{{pedido.numTarjeta}}</td>
 							</tr>
 							<tr>
 								<th scope="row">

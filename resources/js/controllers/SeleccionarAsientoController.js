@@ -8,6 +8,7 @@
 var SeleccionarAsientoController = function($scope, $rootScope, $http) {
   $scope.filas = [];
   $scope.esVisible = false;
+  $scope.botonVisible = false;
 
   var filas = 4;
   var asientosXFilas = 4;
@@ -34,8 +35,15 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
 
   $scope.seleccionarAsiento = function(objAsiento) {
     objAsiento.estaSeleccionada = !objAsiento.estaSeleccionada;
-
     $scope.mostrarAsientosSeleccionadas();
+
+    if ($scope.asientosSeleccionados.length > 0) {
+      $scope.botonVisible = true;
+
+    } else {
+      $scope.botonVisible = false;
+    }
+
   };
 
   $scope.mostrarAsientosSeleccionadas = function() {
