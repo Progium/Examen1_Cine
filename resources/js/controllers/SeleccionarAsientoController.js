@@ -23,10 +23,14 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
     $scope.filas.push(objNuevaFila);
 
     for (var j = 0; j < asientosXFilas; j++) {
+      var objNuevaAsiento;
+
       //Agregar la asiento a la fila
-      var objNuevaAsiento = {
+      objNuevaAsiento = {
         codigoAsiento: objNuevaFila.codigoFila + (j + 1),
-        estaSeleccionada: false
+        estaSeleccionada: false,
+        tipo: (objNuevaFila.codigoFila == "D" ? "Especial" : "Normal"),
+        precio: (objNuevaFila.codigoFila == "D" ? 2500 : 2900 )
       };
 
       objNuevaFila.asientos.push(objNuevaAsiento);
@@ -60,7 +64,7 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
         if (objAsiento.estaSeleccionada) {
           $scope.mensaje += objAsiento.codigoAsiento + " ";
           $scope.cantidadAsientos ++;
-          $scope.asientosSeleccionados.push(objAsiento.codigoAsiento); 
+          $scope.asientosSeleccionados.push(objAsiento); 
         };
       };
     };
@@ -69,10 +73,10 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
   $scope.mostrarDetallesCompra = function() {
     $rootScope.$broadcast('mostrarDetalles', {
       pelicula: $scope.datosPelicula.nombre,
-      fecha: $scope.datosPelicula.tanda,
+      fecha: $scope.datosPelicula.fecha,
+      tanda: $scope.datosPelicula.tandaSeleccionada,
       cantidad: $scope.cantidadAsientos,
-      asientos: $scope.asientosSeleccionados,
-      precio: $scope.datosPelicula.precio
+      asientos: $scope.asientosSeleccionados
     });
 
     $scope.esVisible = false;
@@ -81,6 +85,7 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
   $rootScope.$on('seleccionarAsientos', function(event, objPelicula){
       $scope.datosPelicula = objPelicula;
       $scope.esVisible = true;
+      console.log(objPelicula);
   });
 
 };

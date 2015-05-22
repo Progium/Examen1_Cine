@@ -62,17 +62,18 @@
 						<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
 					</div>
 
-					<div class="col-sm-3" ng-repeat="pelicula in listaPeliculas">
+					<div class="col-sm-4" ng-repeat="pelicula in listaPeliculas">
 
 			    	    <div class="hero-widget well well-sm" ng-class="{ 'pelicula-selected': hovering }" ng-click="seleccionarAsiento(objAsiento)" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
 			                <div class="text">
 			                    <label class="text-muted">Pel&iacute;cula: {{pelicula.nombre}}</label>
-			                    <label class="text-muted">Tanda: {{pelicula.tanda}}</label>
-			                    <label class="text-muted">Precio: {{pelicula.precio}}</label>
-			                    <button type="button" ng-click="reservar(pelicula)"> Reservar </button>
-			                </div>
+			                    <label class="text-muted">fecha: {{pelicula.fecha}}</label>
 
-			                <div class="options">
+			                    <label class="text-muted">Tanda:</label>
+		                    	<select ng-model="pelicula.tandaSeleccionada" ng-options="tanda.hora as tanda.hora for tanda in pelicula.tandas">
+								</select>
+
+			                    <button type="button" ng-click="reservar(pelicula)"> Reservar </button>
 			                </div>
 
 			            </div>
@@ -87,7 +88,7 @@
 					<h3 id="alternate-elements">Seleccionar los asientos</h3>
 					<p>Por favor seleccionar los asientos de tu preferencia.</p>
 					<p><b>Pel&iacute;cula:</b>{{datosPelicula.nombre}}</p>
-					<p><b>Fecha:</b>{{datosPelicula.tanda}}</p>
+					<p><b>Fecha:</b>{{datosPelicula.fecha}} <b>Tanda:</b> {{datosPelicula.tandaSeleccionada}}</p>
 					<h4>{{mensaje}}</h4>
 					<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
 				</div>
@@ -95,12 +96,13 @@
 
 				<div class="row" ng-repeat="objFila in filas">
 					<div class="col-sm-3" ng-repeat="objAsiento in objFila.asientos">
-			    	    <div class="hero-widget well well-sm" ng-class="{ 'selected': objAsiento.estaSeleccionada }" ng-click="seleccionarAsiento(objAsiento)">
+			    	    <div class="hero-widget well well-sm" ng-class="{ 'selected': objAsiento.estaSeleccionada, 'especial': objAsiento.tipo == 'Especial' }" ng-click="seleccionarAsiento(objAsiento)">
 			                <div class="icon">
 			                     <i id="icon{{$index}}" class="glyphicon glyphicon-unchecked "></i>
 			                </div>
 			                <div class="text">
 			                    <var>{{objAsiento.codigoAsiento}}</var>
+			                    <p><b>Tipo:</b>{{objAsiento.tipo}}</p>
 			                </div>
 			                <div class="options">
 			                </div>
@@ -143,6 +145,12 @@
 							</tr>
 							<tr>
 								<th scope="row">
+									Tanda:
+								</th>
+								<td>{{pedido.tanda}}</td>
+							</tr>
+							<tr>
+								<th scope="row">
 									N&uacute;mero de Tarjeta:
 								</th>
 								<td>{{pedido.numTarjeta}}</td>
@@ -153,7 +161,7 @@
 								</th>
 								<td>
 									<div ng-repeat="asiento in pedido.asientos">
-										{{asiento}}
+										{{asiento.codigoAsiento}} {{asiento.tipo}} ¢ {{asiento.precio}} 
 									</div>
 								</td>
 							</tr>

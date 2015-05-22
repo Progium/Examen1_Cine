@@ -15,7 +15,11 @@ html, body {
 .hero-widget .options { margin-top: 10px; }
 
 .selected {
-  background-color: rgb(137, 177, 184);
+  background-color: rgb(137, 177, 184) !important;
+}
+
+.especial {
+  background-color: rgb(147, 237, 186);
 }
 
 .pelicula-selected{

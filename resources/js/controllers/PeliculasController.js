@@ -16,32 +16,58 @@ var PeliculasController = function($scope, $rootScope, $http, $window) {
   $rootScope.$on('mostrarPeliculas', function(event) {
     $scope.listaPeliculas = [{
       nombre: "Avengers:La Era de Ultron",
-      tanda: "22 de mayo a las 3p.m",
-      precio: "2900"
+      fecha: "25 mayo del 2015",
+      tandaSeleccionada: "11:00 AM",
+      tandas: [
+        {hora: "11:00 AM"},
+        {hora: "01:00 PM"},
+        {hora: "05:00 PM"}
+      ]
     }, {
       nombre: "Heroe del Centro Comercial 2",
-      tanda: "23 de mayo a las 6p.m",
-      precio: "2900"
+      fecha: "26 mayo del 2015",
+      tandaSeleccionada: "11:00 AM",
+      tandas: [
+        {hora: "11:00 AM"},
+        {hora: "01:00 PM"},
+        {hora: "05:00 PM"}
+      ]
     }, {
       nombre: "Mad Max:Furia En El Camino",
-      tanda: "21 de mayo a las 5p.m",
-      precio: "2900"
-    }, {
-      nombre: "Avengers:La Era de Ultron",
-      tanda: "24 de mayo a las 11a.m",
-      precio: "2900"
+      fecha: "27 mayo del 2015",
+      tandaSeleccionada: "11:00 AM",
+      tandas: [
+        {hora: "11:00 AM"},
+        {hora: "01:00 PM"},
+        {hora: "05:00 PM"}
+      ]
     }, {
       nombre: "Maten al Mensajero",
-      tanda: "22 de mayo a las 7p.m",
-      precio: "2900"
+      fecha: "28 mayo del 2015",
+      tandaSeleccionada: "11:00 AM",
+      tandas: [
+        {hora: "11:00 AM"},
+        {hora: "01:00 PM"},
+        {hora: "05:00 PM"}
+      ]
     }, {
       nombre: "Zapatero a tus Zapatos",
-      tanda: "21 de mayo a las 4p.m",
-      precio: "2900"
+      fecha: "29 mayo del 2015",
+      tandaSeleccionada: "11:00 AM",
+      tandas: [
+        {hora: "11:00 AM"},
+        {hora: "01:00 PM"},
+        {hora: "05:00 PM"}
+      ]
     }, {
       nombre: "Rapidos y Furiosos 7",
-      tanda: "24 de mayo a las 10a.m",
-      precio: "2900"
+      fecha: "30 mayo del 2015",
+      tandaSeleccionada: "11:00 AM",
+      tandas: [
+        {hora: "11:00 AM"},
+        {hora: "01:00 PM"},
+        {hora: "05:00 PM"}
+      ]
     }];
 
     $scope.esVisible = true;
