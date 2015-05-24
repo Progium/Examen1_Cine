@@ -8,7 +8,8 @@
 var SeleccionarAsientoController = function($scope, $rootScope, $http) {
   $scope.filas = [];
   $scope.esVisible = false;
-  $scope.botonVisible = false;
+  $scope.precioNormal = 2900;
+  $scope.precioPreferencial = 2500;
 
   var filas = 4;
   var asientosXFilas = 4;
@@ -29,8 +30,8 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
       objNuevaAsiento = {
         codigoAsiento: objNuevaFila.codigoFila + (j + 1),
         estaSeleccionada: false,
-        tipo: (objNuevaFila.codigoFila == "D" ? "Especial" : "Normal"),
-        precio: (objNuevaFila.codigoFila == "D" ? 2500 : 2900 )
+        tipo: (objNuevaFila.codigoFila == "D" ? "Preferencial" : "Normal"),
+        precio: (objNuevaFila.codigoFila == "D" ? $scope.precioPreferencial : $scope.precioNormal)
       };
 
       objNuevaFila.asientos.push(objNuevaAsiento);
@@ -40,14 +41,6 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
   $scope.seleccionarAsiento = function(objAsiento) {
     objAsiento.estaSeleccionada = !objAsiento.estaSeleccionada;
     $scope.mostrarAsientosSeleccionadas();
-
-    if ($scope.asientosSeleccionados.length > 0) {
-      $scope.botonVisible = true;
-
-    } else {
-      $scope.botonVisible = false;
-    }
-
   };
 
   $scope.mostrarAsientosSeleccionadas = function() {
