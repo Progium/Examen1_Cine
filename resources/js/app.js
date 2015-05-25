@@ -27,6 +27,9 @@ App.config(function($routeProvider, $locationProvider) {
 		.when('/factura/:jsonDatosPelicula', {
 			templateUrl: 'modulos/factura/factura.html',
 			controller: 'FacturaController'
+		})
+		.otherwise({
+        	redirectTo: '/iniciar-sesion'
 		});
 
 	//$locationProvider.html5Mode(true);
