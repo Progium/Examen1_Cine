@@ -1,0 +1,31 @@
+<div class="container contenedor-principal"  ng-controller="AsientosController" >
+	
+	<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
+		<h3 id="alternate-elements">Seleccionar los asientos</h3>
+		<p>Por favor seleccionar los asientos de tu preferencia.</p>
+		<p><b>Pel&iacute;cula:</b>{{datosPelicula.nombre}}</p>
+		<p><b>Fecha:</b>{{datosPelicula.fecha}} <b>Tanda:</b> {{datosPelicula.tandaSeleccionada}}</p>
+		<p><b>Precio Asiento Tradicional:</b> {{precioNormal}}</p>
+		<p><b>Precio Asiento Preferencial:</b> {{precioPreferencial}}</p>
+		<h4>{{mensaje}}</h4>
+		<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
+	</div>
+	<div class="row" ng-repeat="objFila in filas">
+		<div class="col-sm-3" ng-repeat="objAsiento in objFila.asientos">
+			<div class="hero-widget well well-sm" ng-class="{ 'selected': objAsiento.estaSeleccionada, 'especial': objAsiento.tipo == 'Preferencial' }" ng-click="seleccionarAsiento(objAsiento)">
+				<div class="icon">
+					<i id="icon{{$index}}" class="glyphicon glyphicon-unchecked "></i>
+				</div>
+				<div class="text">
+					<var>{{objAsiento.codigoAsiento}}</var>
+					<p ng-show="objAsiento.tipo == 'Preferencial'">{{objAsiento.tipo}}</p>
+				</div>
+				<div class="options">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-3 button-next">
+		<button ng-show="asientosSeleccionados.length > 0" ng-click="mostrarDetallesCompra()" class="btn btn-success pull-right">Continuar</button>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container contenedor-principal" ng-controller="PeliculasController">
+	<div class="row">
+		<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
+			<h3 id="alternate-elements">Lista de pel&iacute;culas y tandas disponibles</h3>
+			<p>Por favor seleccionar la pel&iacute;cula y tanda preferida.</p>
+			<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
+		</div>
+		<div class="col-sm-4" ng-repeat="pelicula in listaPeliculas">
+			<div class="hero-widget well well-sm" ng-class="{ 'pelicula-selected': hovering }" ng-click="seleccionarAsiento(objAsiento)" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
+				<div class="text">
+					<label class="text-muted">Pel&iacute;cula: {{pelicula.nombre}}</label>
+					<label class="text-muted">fecha: {{pelicula.fecha}}</label>
+					<label class="text-muted">Tanda:</label>
+					<select ng-model="pelicula.tandaSeleccionada" ng-options="tanda.hora as tanda.hora for tanda in pelicula.tandas">
+					</select>
+					<button type="button" ng-click="reservar(pelicula)"> Reservar </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

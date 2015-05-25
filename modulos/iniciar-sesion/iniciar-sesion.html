@@ -1,0 +1,24 @@
+<div class="container contenedor-principal" ng-controller="IniciarSesionController" >
+	<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
+		<h3 id="alternate-elements">Iniciar sesi&oacute;n</h3>
+		<p>Por favor ingresar el nombre y contrase&ntilde;a para iniciar sesi&oacute;n.</p>
+		<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
+	</div>
+	<p>Nota: Para pruebas puede usar el usuario temporal:</p>
+	<p><b>Nombre:</b> Admin y <b>Contrase&ntilde;a:</b> 1234</p>
+	
+	<form class="form-signin">
+		<label for="inputEmail" class="sr-only">Nombre</label>
+		<input id="inputEmail" class="form-control" placeholder="Usuario" ng-model="nombre" required="" autofocus="">
+		<label for="inputPassword" class="sr-only">Contrase&ntilde;a</label>
+		<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" ng-model="contrasenna" required="">
+		<!-- <div class="checkbox">
+				<label>
+						<input type="checkbox" value="remember-me"> Recordarme
+				</label>
+		</div> -->
+		<br/>
+		<button class="btn btn-lg btn-primary btn-block" ng-click="iniciarSesion()">Entrar</button>
+		<span ng-show="mostrarMensaje" class="mensaje">Nombre o contrase&ntilde;a inv&aacute;lidas</span>
+	</form>
+</div>

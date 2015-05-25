@@ -6,181 +6,44 @@
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 		
 		<script src="resources/js/lib/jquery-1.8.2.js"></script>
-		<script src="resources/js/lib/angular/angular.js" ng:autobind></script>
+		<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+
+		<script src="resources/js/lib/angular/1.3.9/angular.js"></script>
+		<script src="resources/js/lib/angular/1.3.9/angular-route.js"></script>
+
 		<script src="resources/js/app.js"></script>
 		<script src="resources/js/services.js"></script>
-		<script src="resources/js/controllers/LogginController.js"></script>
-		<script src="resources/js/controllers/PeliculasController.js"></script>
-		<script src="resources/js/controllers/SeleccionarAsientoController.js"></script>
-		<script src="resources/js/controllers/FacturaController.js"></script>
-		<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+		<script src="modulos/iniciar-sesion/iniciar-sesion-controller.js"></script>
+		<script src="modulos/peliculas/peliculas-controller.js"></script>
+		<script src="modulos/asientos/asientos-controller.js"></script>
+		<script src="modulos/factura/factura-controller.js"></script>
 
 		<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"  type="text/css" />
 		<link href="resources/css/app.css" rel="stylesheet"  type="text/css" />
 
+		<script type="text/javascript">
+			//angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+		</script>
 	</head>
 	
 	<body>
-		
-		<div id="wrapper" >
+		<div ng-controller="MainController">
+			<!-- Seleccionar modulo:
+			<a href="#/iniciar-sesion">Iniciar Sesion</a> |
+			<a href="#/seleccionar-peliculas">Seleccionar peliculas</a> |
+			<a href="#/seleccionar-asientos">Seleccioar asientos</a> |
+			<a href="#/factura">Factura</a> | -->
 
-			<!-- APerez: Login -->
-			<div class="container contenedor-principal" ng-controller="LogginController" ng-show="esVisible">
-				<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
-					<h3 id="alternate-elements">Iniciar sesi&oacute;n</h3>
-					<p>Por favor ingresar el nombre y contrase&ntilde;a para iniciar sesi&oacute;n.</p>
-					<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
-				</div>
+			<div ng-view></div>
 
-				<p>Nota: Para pruebas puede usar el usuario temporal:</p>
-				<p><b>Nombre:</b> Admin y <b>Contrase&ntilde;a:</b> 1234</p>
-					
-				<form class="form-signin">
-					<label for="inputEmail" class="sr-only">Nombre</label>
-					<input id="inputEmail" class="form-control" placeholder="Usuario" ng-model="nombre" required="" autofocus="">
-					<label for="inputPassword" class="sr-only">Contrase&ntilde;a</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" ng-model="contrasenna" required="">
-					<!-- <div class="checkbox">
-						<label>
-							<input type="checkbox" value="remember-me"> Recordarme
-						</label>
-					</div> -->
-					<br/>
-					<button class="btn btn-lg btn-primary btn-block" ng-click="iniciarSesion()">Entrar</button>
-
-					<span ng-show="mostrarMensaje" class="mensaje">Nombre o contrase&ntilde;a inv&aacute;lidas</span>
-				</form>
-			</div>
-
-			<!-- JPerez: Listar peliculas y tandas -->
-
-			<div class="container contenedor-principal" ng-controller="PeliculasController" ng-show="esVisible">
-				<div class="row">
-					<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
-						<h3 id="alternate-elements">Lista de pel&iacute;culas y tandas disponibles</h3>
-						<p>Por favor seleccionar la pel&iacute;cula y tanda preferida.</p>
-						<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
-					</div>
-
-					<div class="col-sm-4" ng-repeat="pelicula in listaPeliculas">
-
-			    	    <div class="hero-widget well well-sm" ng-class="{ 'pelicula-selected': hovering }" ng-click="seleccionarAsiento(objAsiento)" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
-			                <div class="text">
-			                    <label class="text-muted">Pel&iacute;cula: {{pelicula.nombre}}</label>
-			                    <label class="text-muted">fecha: {{pelicula.fecha}}</label>
-
-			                    <label class="text-muted">Tanda:</label>
-		                    	<select ng-model="pelicula.tandaSeleccionada" ng-options="tanda.hora as tanda.hora for tanda in pelicula.tandas">
-								</select>
-
-			                    <button type="button" ng-click="reservar(pelicula)"> Reservar </button>
-			                </div>
-
-			            </div>
-					</div>
-				</div>
-			</div>
-
-		    <!-- YArias: Seleccionar Asiento -->
-		   	<div class="container contenedor-principal"  ng-controller="SeleccionarAsientoController" ng-show="esVisible">
-				
-				<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
-					<h3 id="alternate-elements">Seleccionar los asientos</h3>
-					<p>Por favor seleccionar los asientos de tu preferencia.</p>
-					<p><b>Pel&iacute;cula:</b>{{datosPelicula.nombre}}</p>
-					<p><b>Fecha:</b>{{datosPelicula.fecha}} <b>Tanda:</b> {{datosPelicula.tandaSeleccionada}}</p>
-					<p><b>Precio Asiento Tradicional:</b> {{precioNormal}}</p>
-					<p><b>Precio Asiento Preferencial:</b> {{precioPreferencial}}</p>
-					<h4>{{mensaje}}</h4>
-					<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
-				</div>
-
-
-				<div class="row" ng-repeat="objFila in filas">
-					<div class="col-sm-3" ng-repeat="objAsiento in objFila.asientos">
-			    	    <div class="hero-widget well well-sm" ng-class="{ 'selected': objAsiento.estaSeleccionada, 'especial': objAsiento.tipo == 'Preferencial' }" ng-click="seleccionarAsiento(objAsiento)">
-			                <div class="icon">
-			                     <i id="icon{{$index}}" class="glyphicon glyphicon-unchecked "></i>
-			                </div>
-			                <div class="text">
-			                    <var>{{objAsiento.codigoAsiento}}</var>
-			                    <p ng-show="objAsiento.tipo == 'Preferencial'">{{objAsiento.tipo}}</p>
-			                </div>
-			                <div class="options">
-			                </div>
-			            </div>
-					</div>
-				</div>
-				<div class="col-sm-3 button-next">
-					<button ng-show="asientosSeleccionados.length > 0" ng-click="mostrarDetallesCompra()" class="btn btn-success pull-right">Continuar</button>
-				</div>
-			</div>
-
-			<!-- MLeandro: Mostrar informacion del boleto -->
-			<div class="container contenedor-principal" ng-controller="FacturaController" ng-show="esVisible">
-				<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
-					<h3 id="alternate-elements">Detalles de la compra</h3>
-					<p>Sus boletos est&aacute;n listos para ser procesados, confirmar los detalles de la orden.</p>
-					<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
-				</div>
-
-				<h3>Cin&eacute;polis Paseo Metr&oacute;poli</h3>
-
-				<div class="table-responsive">
-					<table class="table table-bordered table-striped">
-						<colgroup>
-						<col class="col-xs-1">
-						<col class="col-xs-7">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="row">
-									Pel&iacute;cula:
-								</th>
-								<td>{{pedido.pelicula}} </td>
-							</tr>
-							<tr>
-								<th scope="row">
-									Fecha:
-								</th>
-								<td>{{pedido.fecha}}</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									Tanda:
-								</th>
-								<td>{{pedido.tanda}}</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									N&uacute;mero de Tarjeta:
-								</th>
-								<td>{{pedido.numTarjeta}}</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									Asientos:
-								</th>
-								<td>
-									<div ng-repeat="asiento in pedido.asientos">
-										{{asiento.codigoAsiento}} {{asiento.tipo}} ¢ {{asiento.precio}} 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<code>TOTAL:</code>
-								</th>
-								<td>{{pedido.total}}</td>
-							</tr>
-						</tbody>
-					</table>
-
-					<button ng-click="aceptar()" class="btn btn-success pull-right">ACEPTAR</button>
-				</div>
-
-			</div>
-		</div>		
+			<hr />
+			
+			<!-- <pre>$location.path() = {{$location.path()}}</pre>
+			<pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+			<pre>$route.current.params = {{$route.current.params}}</pre>
+			<pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+			<pre>$routeParams = {{$routeParams}}</pre> -->
+		</div>	
 	</body>
 	
 </html>

@@ -1,0 +1,59 @@
+<div class="container contenedor-principal" ng-controller="FacturaController">
+	<div class="bs-callout bs-callout-info" id="callout-type-b-i-elems">
+		<h3 id="alternate-elements">Detalles de la compra</h3>
+		<p>Sus boletos est&aacute;n listos para ser procesados, confirmar los detalles de la orden.</p>
+		<img src="resources/img/logo_progium.png" alt="Smiley face" class="pull-right logo-progium">
+	</div>
+	<h3>Cin&eacute;polis Paseo Metr&oacute;poli</h3>
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+			<colgroup>
+			<col class="col-xs-1">
+			<col class="col-xs-7">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">
+						Pel&iacute;cula:
+					</th>
+					<td>{{pedido.pelicula}} </td>
+				</tr>
+				<tr>
+					<th scope="row">
+						Fecha:
+					</th>
+					<td>{{pedido.fecha}}</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						Tanda:
+					</th>
+					<td>{{pedido.tanda}}</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						N&uacute;mero de Tarjeta:
+					</th>
+					<td>{{pedido.numTarjeta}}</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						Asientos:
+					</th>
+					<td>
+						<div ng-repeat="asiento in pedido.asientos">
+							{{asiento.codigoAsiento}} {{asiento.tipo}} ¢ {{asiento.precio}}
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<code>TOTAL:</code>
+					</th>
+					<td>{{pedido.total}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<button ng-click="aceptar()" class="btn btn-success pull-right">ACEPTAR</button>
+	</div>
+</div>

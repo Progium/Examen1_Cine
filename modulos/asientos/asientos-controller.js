@@ -1,13 +1,19 @@
 'use strict';
 
 /**
- * SeleccionarAsientoController
+ * AsientosController
  * @constructor
  */
 
-var SeleccionarAsientoController = function($scope, $rootScope, $http) {
+
+App.controller('AsientosController', function($scope, $location, $routeParams) {
+  $scope.datosPelicula = {
+    fecha: $routeParams.fecha,
+    nombre: $routeParams.nombre,
+    tandaSeleccionada: $routeParams.tanda
+  };
+
   $scope.filas = [];
-  $scope.esVisible = false;
   $scope.precioNormal = 2900;
   $scope.precioPreferencial = 2500;
 
@@ -64,21 +70,15 @@ var SeleccionarAsientoController = function($scope, $rootScope, $http) {
   }
 
   $scope.mostrarDetallesCompra = function() {
-    $rootScope.$broadcast('mostrarDetalles', {
+    //Mostrar datos de la factura
+    $location.path('/factura/' + JSON.stringify({
       pelicula: $scope.datosPelicula.nombre,
       fecha: $scope.datosPelicula.fecha,
       tanda: $scope.datosPelicula.tandaSeleccionada,
       cantidad: $scope.cantidadAsientos,
       asientos: $scope.asientosSeleccionados
-    });
+    }));
 
-    $scope.esVisible = false;
+    // $scope.esVisible = false;
   };
-
-  $rootScope.$on('seleccionarAsientos', function(event, objPelicula){
-      $scope.datosPelicula = objPelicula;
-      $scope.esVisible = true;
-      console.log(objPelicula);
-  });
-
-};
+});
